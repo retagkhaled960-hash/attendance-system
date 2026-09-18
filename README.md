@@ -38,8 +38,8 @@ A RESTful API built with **Node.js**, **Express**, and **PostgreSQL** for managi
 ### Installation
 
 ```bash
-git clone <your-repo-url>
-cd <attendance-system>
+git clone https://github.com/retagkhaled960-hash/attendance-system.git
+cd attendance-system
 npm install
 ```
 
@@ -49,7 +49,11 @@ Create a `.env` file in the root directory:
 
 ```env
 PORT=5000
-DATABASE_URL=postgresql://username:password@localhost:5432/your_db
+DB_USER=your_db_user_here
+DB_PASSWORD=your_db_password_here
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=your_database_name_here
 JWT_SECRET=your_jwt_secret_key
 ```
 
@@ -66,8 +70,8 @@ psql -d your_db -f database/seed.sql   # optional sample data
 
 ```bash
 node server.js
-# or, if you add a dev script with nodemon:
-npm run dev
+# or,
+npx nodemon server.js
 ```
 
 The server listens on the port set in `.env` (defaults to `5000`).
@@ -120,7 +124,7 @@ The server listens on the port set in `.env` (defaults to `5000`).
 ```json
 {
   "message": "Logged in successfully!",
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "token": "your_jwt_token_here",
   "user": {
     "id": 12,
     "username": "ahmed_ali",
