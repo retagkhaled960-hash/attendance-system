@@ -172,7 +172,7 @@ Authorization: Bearer <token>
   "attendance": {
     "id": 101,
     "user_id": 12,
-    "check_in_time": "2026-09-18 07:21:05 PM",
+    "check_in_time": "2026-09-18 07:21:05 AM",
     "check_out_time": null,
     "status": "Present"
   }
