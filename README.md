@@ -32,9 +32,7 @@ A RESTful API built with **Node.js**, **Express**, and **PostgreSQL** for managi
 - Node.js
 - PostgreSQL
 - npm
-
-> ⚠️ This repo currently has no `package.json` committed — add one with your dependencies (`express`, `pg`, `bcrypt`, `jsonwebtoken`, `dotenv`, and your validation library) and the scripts referenced below before following these steps.
-
+  
 ### Installation
 
 ```bash
@@ -63,7 +61,7 @@ Run the SQL files against your PostgreSQL database:
 
 ```bash
 psql -d your_db -f database/schema.sql
-psql -d your_db -f database/seed.sql   # optional sample data
+Note: Database tables and initial structure can be set up via your local migration/schema setup, and you can register your first user (or admin) directly through the /api/auth/register endpoint.
 ```
 
 ### Running the Server
@@ -107,7 +105,7 @@ The server listens on the port set in `.env` (defaults to `5000`).
     "role": "employee",
     "employee_code": "EMP-2026-012",
     "department_id": null,
-    "created_at": "2026-09-18T08:00:00.000Z"
+    "created_at": "2026-09-18 07:21:05"
   }
 }
 ```
@@ -174,7 +172,7 @@ Authorization: Bearer <token>
   "attendance": {
     "id": 101,
     "user_id": 12,
-    "check_in_time": "2026-09-18T08:02:15.000Z",
+    "check_in_time": "2026-09-18 07:21:05",
     "check_out_time": null,
     "status": "Present"
   }
@@ -189,8 +187,8 @@ Returns `409 Conflict` if the user already has an open check-in.
   "attendance": {
     "id": 101,
     "user_id": 12,
-    "check_in_time": "2026-09-18T08:02:15.000Z",
-    "check_out_time": "2026-09-18T17:05:40.000Z",
+    "check_in_time": "2026-09-18 09:11:05",
+    "check_out_time": "2026-09-18 05:24:05",
     "status": "Present"
   }
 }
