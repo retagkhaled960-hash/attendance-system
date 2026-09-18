@@ -105,7 +105,7 @@ The server listens on the port set in `.env` (defaults to `5000`).
     "role": "employee",
     "employee_code": "EMP-2026-012",
     "department_id": null,
-    "created_at": "2026-09-18 07:21:05"
+    "created_at": "2026-09-18 07:21:05 AM"
   }
 }
 ```
@@ -172,7 +172,7 @@ Authorization: Bearer <token>
   "attendance": {
     "id": 101,
     "user_id": 12,
-    "check_in_time": "2026-09-18 07:21:05",
+    "check_in_time": "2026-09-18 07:21:05 PM",
     "check_out_time": null,
     "status": "Present"
   }
@@ -187,8 +187,8 @@ Returns `409 Conflict` if the user already has an open check-in.
   "attendance": {
     "id": 101,
     "user_id": 12,
-    "check_in_time": "2026-09-18 09:11:05",
-    "check_out_time": "2026-09-18 05:24:05",
+    "check_in_time": "2026-09-18 07:21:05 AM",
+    "check_out_time": "2026-09-18 05:24:05 PM",
     "status": "Present"
   }
 }
