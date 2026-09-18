@@ -33,7 +33,7 @@ class UserController {
                 email,
                 passwordHash,
                 role: finalRole,
-                employeeCode,
+                employeeCode: employeeCode || null,
                 departmentId
             });
 

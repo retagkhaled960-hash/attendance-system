@@ -24,12 +24,14 @@ class UserModel {
         `;
 
 
+        const generatedCode = employeeCode || `EMP-${Date.now().toString().slice(-6)}`;
+
         const values = [
             username, 
             email, 
             passwordHash, 
             role, 
-            employeeCode || null, 
+            generatedCode,
             departmentId || null
         ];
         
