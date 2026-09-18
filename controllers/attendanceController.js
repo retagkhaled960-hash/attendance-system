@@ -1,16 +1,13 @@
 const AttendanceModel = require('../models/attendanceModel');
 
 class AttendanceController {
-    static async checkIn(req, res, next) {
-        try {
-            const userId = req.body.userId || req.user.id;
-            if (req.user.role === 'employee' && Number(userId) !== Number(req.user.id)) {
-                return res.status(403).json({ error: 'Employees can only check in for themselves.' });
-            }
-            const attendance = await AttendanceModel.checkIn(userId, req.body.checkInTime);
-            if (!attendance) {
-                return res.status(409).json({ error: 'An active check-in already exists for this user.' });
-            }
+   static async checkIn(req, res, next) {
+    try {
+        const userId = req.user.id;
+        const attendance = await AttendanceModel.checkIn(userId, req.body.checkInTime);
+        if (!attendance) {
+            return res.status(409).json({ error: 'An active check-in already exists for this user.' });
+        }
             return res.status(201).json({
                 message: 'Checked in successfully!',
                 attendance
@@ -23,10 +20,7 @@ class AttendanceController {
 
     static async checkOut(req, res, next) {
         try {
-            const userId = req.body.userId || req.user.id;
-            if (req.user.role === 'employee' && Number(userId) !== Number(req.user.id)) {
-                return res.status(403).json({ error: 'Employees can only check out for themselves.' });
-            }
+            const userId = req.user.id;
             const attendance = await AttendanceModel.checkOut(userId, req.body.checkOutTime);
             if (!attendance) {
                 return res.status(404).json({ error: 'No active check-in found to check out from.' });
