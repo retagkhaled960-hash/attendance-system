@@ -11,7 +11,7 @@ router.get('/', verifyToken, checkRole(['admin', 'manager']), AttendanceControll
 
 
 router.get('/users/:userId', verifyToken, checkRole(['admin', 'manager']), AttendanceController.getAttendanceByUserId);
-
+router.get('/me', verifyToken, AttendanceController.getMyAttendance);
 
 
 router.post('/check-in', verifyToken, checkRole(['admin', 'manager', 'employee']), validate(createAttendanceSchema), AttendanceController.checkIn);

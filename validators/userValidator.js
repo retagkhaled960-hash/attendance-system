@@ -22,30 +22,6 @@ const registerSchema = Joi.object({
     })
 });
 
-const loginSchema = Joi.object({
-    email: Joi.string().email().required().messages({
-        'string.email': 'Invalid email format',
-        'any.required': 'Email is required'
-    }),
-    password: Joi.string().required().messages({
-        'any.required': 'Password is required'
-    })
-});
-
-
-
-const updatePasswordSchema = Joi.object({
-    currentPassword: Joi.string().min(6).required().messages({
-        'string.min': 'Current password must be at least 6 characters long',
-        'any.required': 'Current password is required to confirm identity'
-    }),
-    newPassword: Joi.string().min(6).required().messages({
-        'string.min': 'New password must be at least 6 characters long',
-        'any.required': 'New password is required'
-    })
-});
-
-
 
 
 const createUserSchema = Joi.object({
@@ -70,7 +46,5 @@ const createUserSchema = Joi.object({
 
 module.exports = {
     registerSchema,
-    loginSchema,
-    createUserSchema,
-    updatePasswordSchema
+    createUserSchema
 };

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { verifyToken, checkRole } = require('../middleware/authMiddleware');
 const validate = require('../middleware/validateMiddleware');
-const { createDepartmentSchema, updateDepartmentSchema } = require('../validators/departmentValidator');
+const { createDepartmentSchema } = require('../validators/departmentValidator');
 const DepartmentController = require('../controllers/departmentController');
 
 router.get('/', verifyToken, checkRole(['admin']), DepartmentController.getAllDepartments);

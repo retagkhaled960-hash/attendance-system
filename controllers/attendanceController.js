@@ -4,7 +4,8 @@ class AttendanceController {
    static async checkIn(req, res, next) {
     try {
         const userId = req.user.id;
-        const attendance = await AttendanceModel.checkIn(userId, req.body.checkInTime);
+        const checkInTime = req.user.role === 'admin' ? req.body.checkInTime : undefined;
+        const attendance = await AttendanceModel.checkIn(userId, checkInTime);
         if (!attendance) {
             return res.status(409).json({ error: 'An active check-in already exists for this user.' });
         }
@@ -21,7 +22,8 @@ class AttendanceController {
     static async checkOut(req, res, next) {
         try {
             const userId = req.user.id;
-            const attendance = await AttendanceModel.checkOut(userId, req.body.checkOutTime);
+            const checkOutTime = req.user.role === 'admin' ? req.body.checkOutTime : undefined;
+            const attendance = await AttendanceModel.checkOut(userId, checkOutTime);
             if (!attendance) {
                 return res.status(404).json({ error: 'No active check-in found to check out from.' });
             }
